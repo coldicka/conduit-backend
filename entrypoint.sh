@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # collect static files
 echo "collect static files..."
@@ -18,7 +19,7 @@ python manage.py createsuperuser --noinput \
 ###
 
 # Check if gunicorn is installed
-if ! command -v gunicorn &> /dev/null then
+if [! command -v gunicorn &> /dev/null]; then
     echo "Gunicorn could not be found, installing it."
     pip install --user gunicorn
 fi
