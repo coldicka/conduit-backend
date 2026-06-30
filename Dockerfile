@@ -1,12 +1,6 @@
 # Use Python 3.12 slim image as the base
 FROM python:3.12
 
-# Prevents Python from writing .pyc files
-ENV PYTHONDONTWRITEBYTECODE=1
-
-# Prevents Python from buffering stdout/stderr (important for real-time logs in Docker)
-ENV PYTHONUNBUFFERED=1
-
 # Set the working directory inside the container
 WORKDIR /app
 
@@ -30,7 +24,7 @@ RUN chmod +x /entrypoint.sh && chown appuser:appuser /entrypoint.sh
 USER appuser
 
 # Expose port 8000 to access the backend application. This is the port that the application will listen on inside the container.
-EXPOSE 8000
+EXPOSE ${Backend_PORT}
 
 # Set the entrypoint script to be executed when the container starts. This script will handle any necessary setup before starting the application.
 ENTRYPOINT ["sh", "entrypoint.sh"]
