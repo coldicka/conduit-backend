@@ -7,7 +7,7 @@ python manage.py collectstatic --noinput
 
 # database migrations
 echo "apply database migrations..."
-python manage.py migrations  || { echo "Makemigrations failed"; exit 1; }
+python manage.py makemigrations  || { echo "Makemigrations failed"; exit 1; }
 python manage.py migrate  || { echo "Migration failed"; exit 1; }
 
 echo "Creating superuser..."
@@ -19,7 +19,8 @@ python manage.py createsuperuser --noinput \
 ###
 
 # Check if gunicorn is installed
-if [! command -v gunicorn &> /dev/null]; then
+if ! command -v gunicorn &> /dev/null
+then
     echo "Gunicorn could not be found, installing it."
     pip install --user gunicorn
 fi

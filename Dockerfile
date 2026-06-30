@@ -1,11 +1,6 @@
 # Use Python 3.12 slim image as the base
 FROM python:3.12
 
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
-
 # Prevents Python from writing .pyc files
 ENV PYTHONDONTWRITEBYTECODE=1
 
