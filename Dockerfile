@@ -23,15 +23,14 @@ COPY . ${WORKDIR}
 RUN useradd -m -r appuser && chown -R appuser:appuser /app
 
 COPY entrypoint.sh /entrypoint.sh
+
+# Make entrypoint.sh executable
 RUN chmod +x /entrypoint.sh && chown appuser:appuser /entrypoint.sh
 
 USER appuser
 
 # Expose port 8000 to access the backend application. This is the port that the application will listen on inside the container.
 EXPOSE 8000
-
-# Make entrypoint.sh executable
-RUN chmod +x entrypoint.sh
 
 # Set the entrypoint script to be executed when the container starts. This script will handle any necessary setup before starting the application.
 ENTRYPOINT ["sh", "entrypoint.sh"]
