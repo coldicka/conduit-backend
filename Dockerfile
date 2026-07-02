@@ -1,5 +1,5 @@
-# Use Python 3.12 slim image as the base
-FROM python:3.12
+# Use Python 3.6 slim image as the base
+FROM python:3.6-slim
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -24,7 +24,7 @@ RUN chmod +x /entrypoint.sh && chown appuser:appuser /entrypoint.sh
 USER appuser
 
 # Expose port 8000 to access the backend application. This is the port that the application will listen on inside the container.
-EXPOSE ${Backend_PORT}
+EXPOSE ${BACKEND_PORT}
 
 # Set the entrypoint script to be executed when the container starts. This script will handle any necessary setup before starting the application.
 ENTRYPOINT ["sh", "entrypoint.sh"]
