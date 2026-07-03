@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2^f+3@v7$v1f8yt0!s)3-1t$)tlp+xm17=*g))_xoi&&9m#2a&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DEBUG', 'False').lower() in ['true', '1']
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
@@ -137,13 +137,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CORS_ALLOWED_ORIGINS = [
     'http://0.0.0.0:8000',
     'http://localhost:8000',
-    'http://127.0.0.1:8000'
+    'http://127.0.0.1:8000',
+    'http://localhost:8282',
+    'http://127.0.0.1:8282' 
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://0.0.0.0:8000',
     'http://localhost:8000',
-    'http://127.0.0.1:8000'
+    'http://127.0.0.1:8000',
+    'http://localhost:8282',
+    'http://127.0.0.1:8282'
 ]
 
 # Tell Django about the custom `User` model we created. The string
