@@ -6,13 +6,13 @@ WORKDIR /app
 
 # Run the following command to install system dependencies required for building Python packages and running the application.
 # Copy the requirements.txt file into the container.
-COPY requirements.txt ${WORKDIR}
+COPY requirements.txt .
 
 # install the Python dependencies listed in the container.
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the project files into the container
-COPY . ${WORKDIR}
+COPY . .
 
 RUN useradd -m -r appuser && chown -R appuser:appuser /app
 
