@@ -6,7 +6,6 @@ sleep 3
 
 # database migrations
 echo "apply database migrations..."
-# python manage.py makemigrations  || { echo "Makemigrations failed"; exit 1; }
 python manage.py migrate  || { echo "Migration failed"; exit 1; }
 
 # collect static files
@@ -21,4 +20,4 @@ fi
 
 # Start Django Server with gunicorn
 echo "Starting Django Server with gunicorn..."
-exec gunicorn conduit.wsgi:application --bind 0.0.0.0:${BACKEND_PORT}
+exec gunicorn conduit.wsgi:application --bind 0.0.0.0:8000
